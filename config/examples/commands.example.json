@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "commands": [
+    {
+      "id": "rocketchat-project",
+      "name": "Rocket.Chat project",
+      "triggers": ["open my rocket chat project", "open rocket chat"],
+      "actions": [{ "type": "open_project", "projectId": "rocketchat", "editor": "vscode" }],
+      "response": "Rocket.Chat is open.",
+      "enabled": true
+    },
+    {
+      "id": "development-mode",
+      "name": "Development mode",
+      "triggers": ["start development mode", "start dev mode"],
+      "actions": [
+        { "type": "open_project", "projectId": "rocketchat", "editor": "preferred" },
+        { "type": "wait", "ms": 800 },
+        { "type": "open_url", "url": "https://developer.rocket.chat/", "browser": "preferred" }
+      ],
+      "response": "Development mode is ready.",
+      "enabled": true
+    },
+    {
+      "id": "graph-practice",
+      "name": "Graph practice",
+      "triggers": ["practice graphs", "start graph practice"],
+      "actions": [
+        { "type": "open_url", "url": "https://leetcode.com/tag/graph/" },
+        { "type": "web_search", "engine": "youtube", "query": "graph algorithms explained" }
+      ],
+      "response": "Graph practice is open.",
+      "enabled": true
+    }
+  ]
+}

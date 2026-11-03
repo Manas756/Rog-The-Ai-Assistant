@@ -1,0 +1,124 @@
+:root {
+  --ink: #0a0907;
+  --gold: #d4a956;
+  --champagne: #e9d3a1;
+  --muted: #a39a8b;
+  --ember: #d9876a;
+  --line: rgba(212, 169, 86, 0.16);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+  font-family: 'Segoe UI Variable Text', 'Segoe UI', system-ui, sans-serif;
+}
+
+#orb {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+body.hover #orb {
+  cursor: pointer;
+}
+
+/* Compact status line beneath the orb. Appears only while needed. */
+#bubble {
+  position: absolute;
+  left: 50%;
+  top: 66px;
+  max-width: 340px;
+  transform: translate(-50%, -4px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(10, 9, 7, 0.84);
+  border: 1px solid var(--line);
+  color: var(--champagne);
+  font-size: 11.5px;
+  line-height: 16px;
+  letter-spacing: 0.015em;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 220ms var(--ease),
+    transform 320ms var(--ease);
+}
+
+#bubble.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+#bubble-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* room for italic overhang so the closing quote isn't clipped */
+  padding-right: 2px;
+}
+
+#bubble[data-tone='quote'] {
+  color: var(--muted);
+  font-style: italic;
+}
+#bubble[data-tone='quiet'] {
+  color: var(--muted);
+}
+#bubble[data-tone='error'] {
+  color: var(--ember);
+  border-color: rgba(217, 135, 106, 0.22);
+}
+#bubble[data-tone='confirm'] {
+  pointer-events: auto;
+  white-space: normal;
+  border-radius: 12px;
+}
+
+#chips {
+  display: flex;
+  gap: 6px;
+  flex: none;
+}
+#chips[hidden] {
+  display: none;
+}
+#chips button {
+  font: inherit;
+  font-size: 11px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--ink);
+  background: var(--gold);
+  border: 1px solid var(--gold);
+  transition: background 150ms var(--ease);
+}
+#chips button#no {
+  color: var(--champagne);
+  background: transparent;
+  border-color: var(--line);
+}
+#chips button:hover {
+  background: var(--champagne);
+}
+#chips button#no:hover {
+  background: rgba(233, 211, 161, 0.08);
+}
+
+.reduced #bubble {
+  transition: opacity 120ms linear;
+  transform: translate(-50%, 0);
+}

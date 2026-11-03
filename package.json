@@ -1,0 +1,78 @@
+{
+  "name": "rog",
+  "productName": "ROG",
+  "version": "0.1.0",
+  "description": "ROG - a minimal, voice-controlled desktop assistant for Windows",
+  "main": "dist/main/index.js",
+  "private": true,
+  "license": "MIT",
+  "author": "Aditya Verma",
+  "type": "commonjs",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "start": "node scripts/build.mjs && electron .",
+    "dev": "node scripts/build.mjs && electron . --dev",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "smoke:speech": "node scripts/speech-host-smoke.mjs",
+    "icons": "node scripts/make-icons.mjs",
+    "dist": "node scripts/build.mjs && electron-builder --win nsis portable",
+    "dist:dir": "node scripts/build.mjs && electron-builder --win dir",
+    "setup:whisper": "node scripts/setup-whisper.mjs",
+    "measure": "powershell -NoProfile -File scripts/measure-idle.ps1"
+  },
+  "build": {
+    "appId": "dev.rog.assistant",
+    "productName": "ROG",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "package.json",
+      "node_modules/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "resources/speech",
+        "to": "speech"
+      },
+      {
+        "from": "resources/icons",
+        "to": "icons"
+      },
+      {
+        "from": "resources/models",
+        "to": "models"
+      }
+    ],
+    "win": {
+      "icon": "resources/icons/icon.ico",
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "asarUnpack": [
+      "node_modules/onnxruntime-node/**"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "electron": "^45.0.0",
+    "electron-builder": "^26.15.3",
+    "esbuild": "^0.28.2",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.1.0",
+    "@huggingface/transformers": "^4.3.1",
+    "zod": "^3.25.76"
+  }
+}

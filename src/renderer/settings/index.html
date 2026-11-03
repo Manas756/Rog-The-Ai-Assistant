@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; media-src 'self' mediastream:; connect-src 'none'"
+    />
+    <title>ROG Settings</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="titlebar">
+      <span class="mark" aria-hidden="true"></span>
+      <span class="title">ROG</span>
+      <span id="status-pill" class="pill">…</span>
+    </header>
+    <div class="shell">
+      <nav id="nav" aria-label="Sections"></nav>
+      <main id="content" tabindex="-1"></main>
+    </div>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <script src="main.js"></script>
+  </body>
+</html>

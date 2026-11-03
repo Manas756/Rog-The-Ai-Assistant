@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "voice": {
+    "monitoring": true,
+    "wakeWordEnabled": true,
+    "wakeWords": ["rog", "rogue", "hey rog", "okay rog"],
+    "wakeSensitivity": 0.5,
+    "vadSensitivity": 0.5,
+    "commandTimeoutMs": 7000,
+    "microphoneId": "default",
+    "pushToTalkShortcut": "Control+Alt+R",
+    "muteShortcut": "Control+Alt+M",
+    "showTranscript": true
+  },
+  "speech": { "enabled": true, "voice": "", "rate": 1, "volume": 90 },
+  "orb": { "offsetX": 0, "offsetY": 0, "alwaysOnTop": true, "reducedMotion": "system", "particleDensity": 1, "intensity": 1 },
+  "startup": { "launchAtLogin": false },
+  "browser": { "preferred": "brave", "customPaths": {} },
+  "editor": { "preferred": "vscode", "customPaths": {} },
+  "projects": [
+    { "id": "rocketchat", "name": "Rocket.Chat", "path": "C:\\Users\\you\\code\\Rocket.Chat", "aliases": ["rc"] }
+  ],
+  "apps": [],
+  "leetcode": {
+    "browser": "preferred",
+    "openMode": "tabs",
+    "leetcodeUrl": "https://leetcode.com/",
+    "musicUrl": "https://music.youtube.com/",
+    "playlistUrl": "",
+    "openEditor": false,
+    "editorProjectId": "",
+    "extraUrls": [],
+    "response": "LeetCode mode is ready. Good luck."
+  },
+  "llm": {
+    "enabled": false,
+    "provider": "anthropic",
+    "model": "claude-opus-5-5",
+    "baseUrl": "",
+    "confirmPlans": true,
+    "timeoutMs": 10000
+  }
+}
